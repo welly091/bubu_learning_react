@@ -1,5 +1,5 @@
 import { Component } from "react";
-import {Card} from "react-bootstrap";
+import {Card, Button} from "react-bootstrap";
 import "./Beast.css";
 
 class Beast extends Component{
@@ -8,6 +8,11 @@ class Beast extends Component{
         this.state={
             count:0
         }
+    }
+
+    handleClick = () =>{
+        this.setState({count: this.state.count+1});
+        this.props.totalCount();
     }
 
     render(){
@@ -19,9 +24,8 @@ class Beast extends Component{
                     <div>{this.props.item.description}</div>
                     <div>Number of horns: {this.props.item.horns}</div>
                 </Card.Text>
-                <button onClick={() => this.setState({count: this.state.count+1}) }>Like</button>
+                <Button variant="success" onClick={this.handleClick}>Like</Button>
                 <div>{this.state.count}</div>
-                
             </Card>
         )
     }

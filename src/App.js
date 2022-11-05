@@ -1,17 +1,22 @@
 import {Component} from 'react';
-import Beast from './Beast/Beast';
-import Data from './data.json';
+import Header from './Header/Header';
+import Main from './Main/Main';
+import About from './About/About';
+import { Route, Routes } from 'react-router-dom';
 
 class App extends Component {
   render(){
      return (
-    <div>
-      {
-        Data.map( eachBeast => (
-          <Beast id={eachBeast._id} item={eachBeast}/>
-        ))
-      }
-    </div>
+      <>
+        <Header/>
+
+        <Routes>
+            <Route path="/about" element={<About/>}/>
+            <Route path="/" element={<Main/>}/>
+        </Routes>
+
+        <div>I'm a footer</div>
+      </>
     );
   }
 }
